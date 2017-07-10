@@ -10,8 +10,9 @@ int main()
 	// read row and column
 	int row, colunm;
 	int counter = 0;
+
 	scanf("%d %d", &row, &colunm);
-	do
+	while (row != 0 && colunm != 0)	
 	{
 		counter++;
 		// allocate 2d array with specified row and column
@@ -47,7 +48,7 @@ int main()
 		delete[] field;
 
 		scanf("%d %d", &row, &colunm);
-	} while (row != 0 && colunm != 0);	
+	}
 	return 0;
 }
 
