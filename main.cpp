@@ -9,38 +9,42 @@ int main()
 {
 	// read row and column
 	int row, colunm;
+
 	scanf("%d %d", &row, &colunm);
-
-
-	// allocate 2d array with specified row and column
-	char **field = new char*[row];
-	for (int i = 0; i < row; i++)
+	do
 	{
-		field[i] = new char[colunm];
-	}
 
-
-	// read the rest of file and create one field
-	for (int i = 0; i < row; i++)
-	{
-		char temp[100];
-		scanf("%99s", temp);
-		for(int j = 0; j < colunm; j++)
+		// allocate 2d array with specified row and column
+		char **field = new char*[row];
+		for (int i = 0; i < row; i++)
 		{
-			field[i][j] = temp[j];
+			field[i] = new char[colunm];
 		}
 
-	}	
 
-	// output the fields
-	outputField(row, colunm,field);
+		// read the rest of file and create one field
+		for (int i = 0; i < row; i++)
+		{
+			char temp[100];
+			scanf("%99s", temp);
+			for(int j = 0; j < colunm; j++)
+			{
+				field[i][j] = temp[j];
+			}
 
-	// Delete
-	for(int i = 0; i < colunm; i++)
-		delete[] field[i];
+		}	
 
-	delete[] field;
-	
+		// output the fields
+		outputField(row, colunm,field);
+
+		// Delete
+		for(int i = 0; i < row; i++)
+			delete[] field[i];
+
+		delete[] field;
+
+		scanf("%d %d", &row, &colunm);
+	} while (row != 0 && colunm != 0);	
 	return 0;
 }
 
