@@ -9,11 +9,11 @@ int main()
 {
 	// read row and column
 	int row, colunm;
-
+	int counter = 0;
 	scanf("%d %d", &row, &colunm);
 	do
 	{
-
+		counter++;
 		// allocate 2d array with specified row and column
 		char **field = new char*[row];
 		for (int i = 0; i < row; i++)
@@ -34,9 +34,12 @@ int main()
 
 		}	
 
+		printf("Field #%d:\n", counter);
+
 		// output the fields
 		outputField(row, colunm,field);
 
+		printf("\n");
 		// Delete
 		for(int i = 0; i < row; i++)
 			delete[] field[i];
