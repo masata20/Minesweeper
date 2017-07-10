@@ -65,14 +65,20 @@ void outputField(int sizeOfRow, int sizeOfColunm, char** field)
 						//check left
 						if (checkMines(row, colunm-1, field))
 							mineCounter++;
+						// check left bottom
+						if (checkMines(row+1, colunm-1, field))
+							mineCounter++;
 					}
 					if (colunm != sizeOfColunm-1)
 					{
 						// check right
 						if (checkMines(row, colunm+1, field))
 							mineCounter++;
+						// check right bottom
+						if (checkMines(row+1, colunm+1, field))
+							mineCounter++;
 					}	
-		
+	
 					// check bottom
 					if (checkMines(row+1, colunm, field))
 						mineCounter++;
@@ -86,11 +92,18 @@ void outputField(int sizeOfRow, int sizeOfColunm, char** field)
 							// check left
 							if (checkMines(row, colunm-1, field))
 								mineCounter++;
+							// check up left
+							if (checkMines(row-1, colunm-1, field))
+								mineCounter++;
+
 						}
 						if (colunm != sizeOfColunm-1)
 						{
 							// check right
 							if (checkMines(row, colunm+1, field))
+								mineCounter++;
+							// check up right
+							if (checkMines(row-1, colunm+1, field))
 								mineCounter++;
 						}	
 						// check up
@@ -104,11 +117,23 @@ void outputField(int sizeOfRow, int sizeOfColunm, char** field)
 							// check left
 							if (checkMines(row, colunm-1, field))
 								mineCounter++;
+							// check left up
+							if (checkMines(row-1, colunm-1, field))
+								mineCounter++;
+							// check left bottom
+							if (checkMines(row+1, colunm-1, field))
+								mineCounter++;
 						}
 						if (colunm != sizeOfColunm-1)
 						{
 							// check right
 							if (checkMines(row, colunm+1, field))
+								mineCounter++;
+							// check rightu p
+							if (checkMines(row-1, colunm+1, field))
+								mineCounter++;
+							// check right bottom
+							if (checkMines(row+1, colunm+1, field))
 								mineCounter++;
 						}
 						// checkup
