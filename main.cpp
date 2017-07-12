@@ -12,10 +12,11 @@ int main()
 	int row, colunm;
 	int counter = 0;
 
-	scanf("%d %d", &row, &colunm);
+	scanf("%d%d", &row, &colunm);
 	while (row != 0 && colunm != 0)	
 	{
 		counter++;
+		
 		// allocate 2d array with specified row and column
 		char **field = new char*[row];
 		for (int i = 0; i < row; i++)
@@ -27,14 +28,18 @@ int main()
 		// read the rest of file and create one field
 		for (int i = 0; i < row; i++)
 		{
-			char temp[100];
-			scanf("%99s", temp);
+			char temp[101];
+			scanf("%100s", temp);
 			for(int j = 0; j < colunm; j++)
 			{
 				field[i][j] = temp[j];
 			}
 
 		}	
+
+		if(counter > 1)
+			printf("\n");
+
 
 		printf("Field #%d:\n", counter);
 
@@ -44,7 +49,6 @@ int main()
 		// output the fields
 		outputField(row, colunm,field);
 
-		printf("\n");
 		
 		// Delete
 		for(int i = 0; i < row; i++)
@@ -52,7 +56,7 @@ int main()
 
 		delete[] field;
 		
-		scanf("%d %d", &row, &colunm);
+		scanf("%d%d", &row, &colunm);
 	}
 	return 0;
 }
