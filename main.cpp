@@ -1,3 +1,4 @@
+// @BEGIN_OF_SOURCE_CODE
 #include<iostream>
 using namespace std;
 
@@ -46,7 +47,6 @@ int main()
 			delete[] field[i];
 
 		delete[] field;
-
 		scanf("%d %d", &row, &colunm);
 	}
 	return 0;
@@ -164,6 +164,7 @@ bool checkMines(int row, int colunm, char** field)
 {
 	if(field[row][colunm] == '*')
 		return true;
-	else
-		return false;
+
+	return false;
 }
+// @END_OF_SOURCE_CODE
