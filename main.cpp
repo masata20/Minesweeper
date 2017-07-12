@@ -38,15 +38,20 @@ int main()
 
 		printf("Field #%d:\n", counter);
 
+
+		// if row is 1, the outputfield function cannot work correctly	
+	
 		// output the fields
 		outputField(row, colunm,field);
 
 		printf("\n");
+		
 		// Delete
 		for(int i = 0; i < row; i++)
 			delete[] field[i];
 
 		delete[] field;
+		
 		scanf("%d %d", &row, &colunm);
 	}
 	return 0;
@@ -73,23 +78,33 @@ void outputField(int sizeOfRow, int sizeOfColunm, char** field)
 						//check left
 						if (checkMines(row, colunm-1, field))
 							mineCounter++;
-						// check left bottom
-						if (checkMines(row+1, colunm-1, field))
-							mineCounter++;
+						// check left bottom, iff row size is bigger than 1
+						if (sizeOfRow > 1)
+						{
+							if (checkMines(row+1, colunm-1, field))
+								mineCounter++;
+						}
 					}
 					if (colunm != sizeOfColunm-1)
 					{
 						// check right
 						if (checkMines(row, colunm+1, field))
 							mineCounter++;
-						// check right bottom
-						if (checkMines(row+1, colunm+1, field))
-							mineCounter++;
+						// check right bottom, iff row size is bigger than 1
+						if (sizeOfRow > 1)
+						{
+							if (checkMines(row+1, colunm+1, field))
+								mineCounter++;
+						}
 					}	
 	
-					// check bottom
-					if (checkMines(row+1, colunm, field))
+					// Check bottom, iff row size is bigger than 1
+					if(sizeOfRow > 1)
+					{
+		
+						if (checkMines(row+1, colunm, field))
 						mineCounter++;
+					}
 				}
 				else
 				{
